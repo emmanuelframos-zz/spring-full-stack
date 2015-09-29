@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean name="fileWriter" class="br.com.springIntro.sectionThree.FileWriter"/>
+
+	<bean name="consoleWriter" class="br.com.springIntro.sectionThree.ConsoleWriter"/>
+	
+	<!-- Autowiring By Type -->
+	<bean name="loggerByType" class="br.com.springIntro.sectionThree.LoggerByType" autowire="byType"/>
+
+	<!-- Autowiring By Name (Id works too) -->	
+	<bean name="loggerByName" class="br.com.springIntro.sectionThree.LoggerByName" autowire="byName"/>
+	
+	<!-- Autowiring By Constructor -->	
+	<bean name="loggerByConstructor" class="br.com.springIntro.sectionThree.LoggerByConstructor" autowire="constructor"/>
+
+</beans>
