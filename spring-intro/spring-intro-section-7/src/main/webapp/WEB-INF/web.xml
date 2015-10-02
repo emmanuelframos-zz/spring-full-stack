@@ -1,0 +1,56 @@
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	metadata-complete="true">
+
+	<display-name>sprint-intro-section-7</display-name>
+	
+	<!-- About DispatcherServlet 
+	     
+	     HtpServlet -> extends -> HttpServletBean -> extends -> FrameworkServlet -> extends -> DispatcherServlet
+	     
+	     HttpServletBean  : simple extension of HttpServlet which treats its config parameters (init-param entries within the servlet tag in web.xml) as bean properties.	     
+	     This generic servlet base class has no dependency on the Spring ApplicationContext concept. 
+	     
+	     FrameworkServlet : base servlet for Spring's web framework. Provides integration with a Spring application context.
+	    
+	     DispatcherServlet: takes an incoming URI and finds that method on controller (using handler, e.g HandlerMapping), and combines its results with the matching JSP file 
+	     to make an html document. Each DispatcherServlet has its own WebApplicationContext.
+    -->
+    
+    <!-- About Contexts
+    
+         WebApplicationContext: is designed to work with the standard javax.servlet.ServletContext so it's able to communicate with the container.
+    	 
+    	 There is a ROOT WebApplicationContext, and a WebApplicationContext (CHILD) for each DispatcherServlet.    
+	
+		 In my configuration there's no reason to load my beans in ROOT WebApplicationContext, then I don´t use the ContextLoaderListener, and I keep my bean's references in
+		 CHILD WebApplicationContext.
+	-->  
+         
+	<servlet>		
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<!-- CHILD WebApplicationContext -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:application-context.xml</param-value>
+		</init-param>
+		<!-- Setting this parameter to 1 ensures root ApplicationContext is initialized before WebApplicationContext. -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+		
+	<!-- ROOT WebApplicationContext 
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:application-context.xml</param-value>
+	</context-param>-->
+</web-app>
