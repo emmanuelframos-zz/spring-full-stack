@@ -35,5 +35,7 @@
 	<modules>
 		<module>spring-intro-section-2</module>
    		<module>spring-intro-section-3</module>
+    <module>spring-intro-section-4</module>
+    <module>spring-intro-section-5</module>
   </modules>
 </project>
