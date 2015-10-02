@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com</groupId>
-	<artifactId>spring-intro</artifactId>	
+	<artifactId>spring-intro</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0</version>
-	
+
 	<name>Udemy - The Java Spring Tutorial</name>
 
 	<properties>
@@ -31,11 +32,12 @@
 			<version>4.2.1.RELEASE</version>
 		</dependency>
 	</dependencies>
-	
+
 	<modules>
 		<module>spring-intro-section-2</module>
-   		<module>spring-intro-section-3</module>
-    <module>spring-intro-section-4</module>
-    <module>spring-intro-section-5</module>
-  </modules>
+		<module>spring-intro-section-3</module>
+		<module>spring-intro-section-4</module>
+		<module>spring-intro-section-5</module>
+		<module>spring-intro-section-6</module>
+	</modules>
 </project>
