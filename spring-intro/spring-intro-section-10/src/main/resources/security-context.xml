@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user authorities="admin" name="savatage" password="letmein"/>
+			</security:user-service>			
+		</security:authentication-provider>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource"
+				authorities-by-username-query="select username, role from user_roles where username =?"
+				users-by-username-query="select username,password, enabled from users where username=?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="/resources/**" access="permitAll"/>	
+		<security:intercept-url pattern="/"             access="permitAll"/>
+		<security:intercept-url pattern="/logon"        access="permitAll"/>
+		<security:intercept-url pattern="/createOffer"  access="hasRole('ROLE_JEDI')"/>
+		<security:intercept-url pattern="/showOffers"   access="hasRole('ROLE_SITH')"/>	
+		<security:intercept-url pattern="/**"           access="isAuthenticated()"/>
+		
+		<security:form-login login-page="/logon" authentication-failure-url="/logon?error=true" />
+	</security:http>
+	
+</beans>

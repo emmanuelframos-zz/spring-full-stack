@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>spring-intro-section-6</artifactId>
-	<name>Sprint Intro Section 6 - Working with Databases</name>
+	<name>Spring Intro Section 6 - Working with Databases</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

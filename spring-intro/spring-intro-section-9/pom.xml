@@ -11,7 +11,7 @@
 	</parent>
 
 	<artifactId>spring-intro-section-9</artifactId>
-	<name>Sprint Intro Section 9 - Aspect-Oriented Programming</name>
+	<name>Spring Intro Section 9 - Aspect-Oriented Programming</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

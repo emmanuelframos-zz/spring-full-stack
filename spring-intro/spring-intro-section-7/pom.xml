@@ -7,10 +7,11 @@
 		<version>1.0</version>
 	</parent>
 
+
+
 	<artifactId>spring-intro-section-7</artifactId>
 	<packaging>war</packaging>
-
-	<name>Sprint Intro Section 7 - Spring MVC</name>
+	<name>Spring Intro Section 7 - Spring MVC</name>
 
 	<dependencies>
 		<!-- Spring -->

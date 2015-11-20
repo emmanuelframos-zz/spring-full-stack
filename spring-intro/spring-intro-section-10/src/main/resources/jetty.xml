@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+
+	<New id="tx" class="org.eclipse.jetty.plus.jndi.Transaction">
+		<Arg>
+			<New class="com.atomikos.icatch.jta.UserTransactionImp">
+				<Set name="TransactionTimeout">1800</Set>
+			</New>
+		</Arg>
+	</New>
+
+	<New id="tmjndi" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg></Arg>
+		<Arg>java:comp/TransactionManager</Arg>
+		<Arg>
+			<New class="com.atomikos.icatch.jta.UserTransactionManager" />
+		</Arg>
+	</New>
+
+	<New id="dsMySql" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg></Arg>
+		<Arg>jdbc/ds-mysql-xa</Arg>
+		<Arg>
+			<New class="com.atomikos.jdbc.AtomikosDataSourceBean">
+				<Set name="minPoolSize">2</Set>
+				<Set name="maxPoolSize">50</Set>
+				<Set name="xaDataSourceClassName">com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</Set>
+				<Set name="UniqueResourceName">dsMySql</Set>
+				<Get name="xaProperties">
+					<Call name="setProperty">
+						<Arg>url</Arg>
+						<Arg>jdbc:mysql://localhost:3306/spring-intro</Arg>
+					</Call>
+					<Call name="setProperty">
+						<Arg>user</Arg>
+						<Arg>root</Arg>
+					</Call>
+					<Call name="setProperty">
+						<Arg>password</Arg>
+						<Arg>root</Arg>
+					</Call>
+				</Get>
+			</New>
+		</Arg>
+	</New>
+
+</Configure>
